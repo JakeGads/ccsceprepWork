@@ -1,4 +1,4 @@
-package twenty18;
+import java.util.ArrayList;
 
 /*
  Consider the following configuration of dominoes represented by a sequence of characters:
@@ -58,20 +58,59 @@ EN
  */
 
 public class Problem3 {
+	
 	public static void main(String [] args) {
-		String myDominos = "||//||||||";
+		ArrayList<String> myDominos = new ArrayList<String>();
+		
+		myDominos.add("|||/||_");
+		myDominos.add("/|||||/|_|/||");
+		myDominos.add("||//||||||"); 
+		myDominos.add("||//||||||");
+		myDominos.add("||__ _|_ __|");
+		
+		for(String i : myDominos) {
+			falldown(i);
+		}
+				
+	}
+	
+	public static void falldown(String myDominos) {
 		char[] split = myDominos.toCharArray();
 		boolean notDone = true;
 		
-		String falling = "/";
-		String down = "_"
+		char falling = '/';
+		char down = '_';
+		
+		
+		System.out.println(split);
 		
 		while(notDone) {
 			boolean isChange = false;
 			for(int i = 0; i < split.length && !isChange; i++) {
-				if(split[i].equals)
+				if(split[i] == falling) {
+					split[i] = down;
+					try {
+						if(split[i+1] != falling && split[i+1] != down) {
+							split[i+1] = falling;
+							i += 1;
+						}
+					}
+					catch(java.lang.ArrayIndexOutOfBoundsException e) {
+						notDone = false;
+					}
+				}
 			}
+			
+			notDone = false;
+			
+			for(int i = 0; i < split.length; i++) {
+				if(split[i] == falling) {
+					notDone = true;
+					break;
+				}
+			}
+			System.out.println(split);
 		}
-		
+		System.out.println("Done.\n");
 	}
 }
