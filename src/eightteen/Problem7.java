@@ -52,6 +52,8 @@ public class Problem7 {
 		for(int i = 0; i < temp.length; i++) {
 			numbers[i] = Integer.parseInt(temp[i]);
 		}
+		
+		return numbers[0];
 	}
 	
 	public static int factorial(int n) {
