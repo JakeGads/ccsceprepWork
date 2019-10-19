@@ -41,7 +41,6 @@ case, if there is no possible schedule that satisfies the ordering constraints, 
 should consist of the text No schedule. Example output (corresponding to the example
 input above):
 Order: A B C D
-7
 Order: A,B C D
 Order: A,B C,D
 Order: C,D A B
@@ -55,9 +54,9 @@ public class Problem4{
     public static void main(String[] args){
         ArrayList<String> inputs = new ArrayList<String>();
         
-        inputs.add("A,B,C,D A<C B<D");
-        inputs.add("A,B,C,D A<C B<D A=B");
-        inputs.add("A,B,C,D A<C B<D A=B C=D");
+        inputs.add("A,B,C,D A<C B<D"); // A B C D
+        inputs.add("A,B,C,D A<C B<D A=B"); // A,B C D
+        inputs.add("A,B,C,D A<C B<D A=B C=D"); // A,B C,D
         inputs.add("A,B,C,D D<A D<B C=D");
         inputs.add("A,B,C,D D<A A=B B=C");
         inputs.add("A,B,C,D C<B");
@@ -86,9 +85,8 @@ public class Problem4{
                 i++;
             }
         }
-
-
-
-        return "";
-    }
+        String order = "";
+        boolean previousWasEqual = false;
+        
+        
 }
